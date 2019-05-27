@@ -208,6 +208,82 @@
         </profile>
 
         <profile>
+            <id>docker.authoring</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>Push the docker image</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <images combine.children="override">
+                                <image>
+                                    <name >bcanvural/${project.artifactId}-authoring:${project.version}</name>
+                                    <alias>${project.artifactId}-authoring</alias>
+                                    <build>
+                                        <dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
+                                        <assembly>
+                                            <mode>dir</mode>
+                                            <name>maven/</name>
+                                            <descriptor>${project.basedir}/src/main/docker/assembly/distribution-docker.xml</descriptor>
+                                        </assembly>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>docker.delivery</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>Push the docker image</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <images combine.children="override">
+                                <image>
+                                    <name >bcanvural/${project.artifactId}-delivery:${project.version}</name>
+                                    <alias>${project.artifactId}-delivery</alias>
+                                    <build>
+                                        <dockerFileDir>${project.basedir}/src/main/docker/separate-deployment</dockerFileDir>
+                                        <assembly>
+                                            <mode>dir</mode>
+                                            <name>maven/</name>
+                                            <descriptor>${project.basedir}/src/main/docker/assembly/distribution-without-cms.xml</descriptor>
+                                        </assembly>
+                                    </build>
+                                </image>
+                            </images>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+
+        <profile>
             <id>docker.run</id>
             <dependencies>
                 <dependency>
