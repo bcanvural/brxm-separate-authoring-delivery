@@ -3,6 +3,16 @@
 
   <Appenders>
 
+    <!-- platform.log -->
+    <RollingFile name="platform" fileName="${sys:catalina.base}/logs/platform.log"
+                 filePattern="${sys:catalina.base}/logs/platform.log.%d{yyyy-MM-dd}">
+      <LookupFilter key="jndi:logging/contextName" value="platform" onMatch="ACCEPT"/>
+      <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss} %-5p %t [%C{1}.%M:%L] %m%n"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+      </Policies>
+    </RollingFile>
+
     <!-- cms.log -->
     <RollingFile name="cms" fileName="${sys:catalina.base}/logs/cms.log"
                  filePattern="${sys:catalina.base}/logs/cms.log.%d{yyyy-MM-dd}">
@@ -129,6 +139,7 @@
       <AppenderRef ref="site"/>
       <AppenderRef ref="cms"/>
       <AppenderRef ref="console"/>
+      <AppenderRef ref="platform"/>
     </Root>
 
   </Loggers>
