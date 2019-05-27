@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authoring
+  labels:
+    app: authoring
+    tier: backend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+  selector:
+    app: authoring
+    tier: backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+          app: authoring
+  template:
+    metadata:
+      labels:
+        app: authoring
+        tier: backend
+    spec:
+      containers:
+        - name: authoring
+          image: bcanvural/myproject-authoring:0.1.0-SNAPSHOT #Point to a public docker image registry
+          command: ["/brxm/bin/docker-entrypoint.sh"]
+          env:
+            - name: "profile"
+              value: "postgres"
+            - name: "POSTGRES_DB_HOST"
+              value: "postgres-helm-postgresql.default.svc.cluster.local"
+            - name: "POSTGRES_DB_PORT"
+              value: "5432"
+            - name: "POSTGRES_DB_USER"
+              value: "postgres"
+            - name: "POSTGRES_DB_PASSWORD"
+              value: "KmRqYmB6nI"
+            - name: "POSTGRES_DB_NAME"
+              value: "repositoryDS"
+            - name: "POSTGRES_DB_DRIVER"
+              value: "org.postgresql.Driver"
+            - name: "REPO_WORKSPACE_BUNDLE_CACHE"
+              value: "256"
+            - name: "REPO_VERSIONING_BUNDLE_CACHE"
+              value: "64"
+            - name: "JAVA_ENABLE_DEBUG"
+              value: "true"
+            - name: "REPO_BOOTSTRAP"
+              value: "true"
+          ports:
+            - containerPort: 8080
+            - containerPort: 5005
+              name: "jvm-debug"
+          readinessProbe:
+            httpGet:
+              path: /cms/ping/
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 18 # wait at most 4 minutes for readiness
+          livenessProbe:
+            httpGet:
+              path: /cms/ping/
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            failureThreshold: 5
+

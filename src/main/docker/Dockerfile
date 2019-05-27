@@ -14,7 +14,7 @@ ENV BRXM_PROJECT_PATH "${docker.brxm.project.path}"
 
 # Default repository settings 
 ENV REPO_PATH "${BRXM_PROJECT_PATH}/target/storage"
-ENV REPO_CONFIG ""
+ENV REPO_CONFIG "file://${CATALINA_HOME}/conf/repository-postgres.xml"
 ENV REPO_BOOTSTRAP "true"
 ENV REPO_AUTOEXPORT_ALLOWED "false"
 
