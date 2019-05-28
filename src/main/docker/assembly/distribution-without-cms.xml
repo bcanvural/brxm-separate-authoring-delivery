@@ -10,7 +10,6 @@
     <componentDescriptor>conf-component-docker.xml</componentDescriptor>
     <componentDescriptor>webapps-without-cms-component.xml</componentDescriptor>
     <componentDescriptor>${project.basedir}/src/main/assembly/common-lib-component.xml</componentDescriptor>
-    <componentDescriptor>shared-lib-component-docker.xml</componentDescriptor>
     <componentDescriptor>${project.basedir}/src/main/docker/assembly/docker-db-libs.xml</componentDescriptor>
     <componentDescriptor>${project.basedir}/src/main/docker/assembly/scripts-docker.xml</componentDescriptor>
     <componentDescriptor>${project.basedir}/src/main/assembly/shared-lib-component.xml</componentDescriptor>
