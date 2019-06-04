@@ -18,6 +18,12 @@ Setup helm (kubernetes package manager) https://github.com/helm/helm
 brew install kubernetes-helm
 ```
 
+Init helm
+
+```bash
+helm init
+```
+
 Setup tiller (from kubernetes directory, run the following)
 ```bash
 ./tiller_setup.sh
