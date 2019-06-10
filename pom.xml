@@ -220,15 +220,15 @@
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>Push the docker image</id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>push</goal>
-                                </goals>
-                            </execution>
-                        </executions>
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <id>Push the docker image</id>-->
+<!--                                <phase>initialize</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>push</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
                         <configuration>
                             <images combine.children="override">
                                 <image>
