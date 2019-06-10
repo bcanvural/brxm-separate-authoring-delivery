@@ -1,0 +1,52 @@
+version: '3.4'
+services:
+  authoring:
+    image: bcanvural/myproject-authoring:0.1.0-SNAPSHOT
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    environment:
+      profile: postgres
+      POSTGRES_DB_HOST: db
+      POSTGRES_DB_PORT: 5432
+      POSTGRES_DB_USER: postgres
+      POSTGRES_DB_PASSWORD: mypass
+      POSTGRES_DB_NAME: mydb
+      POSTGRES_DB_DRIVER: org.postgresql.Driver
+      REPO_WORKSPACE_BUNDLE_CACHE: 256
+      REPO_VERSIONING_BUNDLE_CACHE: 64
+      REPO_BOOTSTRAP: "true"
+    depends_on:
+      - db
+  delivery:
+    image: bcanvural/myproject-delivery:0.1.0-SNAPSHOT
+    user: root
+    ports:
+      - "8081:8080"
+    links:
+      - db
+    environment:
+      profile: postgres
+      POSTGRES_DB_HOST: db
+      POSTGRES_DB_PORT: 5432
+      POSTGRES_DB_USER: postgres
+      POSTGRES_DB_PASSWORD: mypass
+      POSTGRES_DB_NAME: mydb
+      POSTGRES_DB_DRIVER: org.postgresql.Driver
+      REPO_WORKSPACE_BUNDLE_CACHE: 256
+      REPO_VERSIONING_BUNDLE_CACHE: 64
+      REPO_BOOTSTRAP: "false"
+    volumes:
+      - ./curl_till_200.sh:/brxm/curl_till_200.sh
+    depends_on:
+      - db
+      - authoring
+    entrypoint: ["sh", "-c", "/brxm/curl_till_200.sh && /brxm/bin/docker-entrypoint.sh"]
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_PASSWORD: mypass
+      POSTGRES_USER: postgres
