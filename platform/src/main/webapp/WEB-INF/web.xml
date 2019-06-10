@@ -63,6 +63,12 @@
         <load-on-startup>5</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>RepositoryJaxrsServlet</servlet-name>
+        <servlet-class>org.onehippo.repository.jaxrs.RepositoryJaxrsServlet</servlet-class>
+        <load-on-startup>6</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>LoggingServlet</servlet-name>
         <url-pattern>/logging/*</url-pattern>
@@ -76,6 +82,11 @@
     <servlet-mapping>
         <servlet-name>PingServlet</servlet-name>
         <url-pattern>/ping/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RepositoryJaxrsServlet</servlet-name>
+        <url-pattern>/ws/*</url-pattern>
     </servlet-mapping>
 
     <env-entry>

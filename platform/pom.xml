@@ -14,14 +14,18 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.onehippo.cms7</groupId>
-            <artifactId>hippo-package-platform-dependencies</artifactId>
+            <groupId>com.onehippo.cms7</groupId>
+            <artifactId>hippo-enterprise-package-platform-dependencies</artifactId>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.onehippo.cms7</groupId>
             <artifactId>hippo-plugin-selections-addon-repository</artifactId>
             <version>${hippo.plugin.selections.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.onehippo.cms7</groupId>
+            <artifactId>hippo-addon-lucene-export</artifactId>
         </dependency>
     </dependencies>
 
