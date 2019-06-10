@@ -79,7 +79,7 @@ mvn clean install && mvn -Pdocker.build,docker.authoring
 (Run eval command above so that the images are picked up by minikube)
 
 ```bash
-mvn clean install && mvn -Pdocker.build.docker.delivery
+mvn clean install && mvn -Pdocker.build,docker.delivery
 ```
 
 ### Deploy authoring
