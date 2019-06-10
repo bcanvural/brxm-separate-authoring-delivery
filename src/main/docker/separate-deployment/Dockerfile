@@ -1,5 +1,7 @@
 FROM ${docker.brxm.base.image}
 
+RUN apt-get -q update && apt-get -qy install curl
+
 LABEL PROJECT=${project.artifactId}
 
 # Default JVM heap size variables
