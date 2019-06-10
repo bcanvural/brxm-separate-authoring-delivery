@@ -125,6 +125,15 @@ kubectl port-forward <pod_id_here> 5005:5005
 Then connect with remote debugger at port 5005
 
 
+# Run brXM with docker-compose instead of minikube
+
+From docker-compose directory, run:
+
+```bash
+docker-compose up
+```
+
+
 
 
 
