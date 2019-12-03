@@ -1,5 +1,7 @@
 # Run brXM in minikube
 
+(Tested minikube version: v1.5.2)
+
 Install virtualbox https://www.virtualbox.org/wiki/Downloads
 
 Install minikube https://github.com/kubernetes/minikube
@@ -13,46 +15,17 @@ minikube --memory 8192 --cpus 2 start
 ```
 
 ### One time setup
-Setup helm (kubernetes package manager) https://github.com/helm/helm
+Setup helm (tested with v3.0.0) (kubernetes package manager) https://github.com/helm/helm
 ```bash
 brew install kubernetes-helm
 ```
 
-Init helm
+Setup db (from kubernetes directory)
 
 ```bash
-helm init
+./setup_dbs.sh
 ```
-
-Setup tiller (from kubernetes directory, run the following)
-```bash
-./tiller_setup.sh
-```
-
-Now you can install anything that is listed here: https://hub.kubeapps.com/
-
-* Install Postgresql: https://hub.kubeapps.com/charts/bitnami/postgresql
-
-* Take note of the output as it is useful. It tells you how to find out the db password etc. Update the db password in 
-kubernetes/authoring-deployment.yaml and kubernetes/delivery-deployment.yaml
-
-* Connect to the db and create a table called "repositoryDS"
-* One way to connect to db would be to forward your localhost port to the db pod.
-##### How to connect to db
-get available pods:
-
-```bash
-kubectl get pods
-```
-
-Forward your localhost directly to the pod:
-
-````bash
-kubectl port-forward <db_pod_id_here> 5432:5432
-````
-
-Then connect to db by a postgresql client (localhost:5432)
-
+This will create brxm repository db and also wpm db for the projects plugin
 
 ## Local Development without pushing to public docker registry
 * To be able to work with the docker daemon on your mac/linux host use the docker-env command in your shell
@@ -92,7 +65,7 @@ kubectl create -f authoring-deployment.yaml
 
 ### Deploy delivery
 
-From kubernetes directory:
+Make sure authoring is deployed first. Then, from kubernetes directory:
 
 ```bash
 kubectl create -f delivery-deployment.yaml
