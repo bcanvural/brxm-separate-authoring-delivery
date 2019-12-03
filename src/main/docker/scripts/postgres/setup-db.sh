@@ -7,6 +7,7 @@ sed --in-place 's/@postgres.port@/'"$POSTGRES_DB_PORT"'/' /usr/local/tomcat/conf
 sed --in-place 's/@postgres.username@/'"$POSTGRES_DB_USER"'/' /usr/local/tomcat/conf/context-$profile.xml
 sed --in-place 's/@postgres.password@/'"$POSTGRES_DB_PASSWORD"'/' /usr/local/tomcat/conf/context-$profile.xml
 sed --in-place 's/@postgres.repo.db@/'"$POSTGRES_DB_NAME"'/' /usr/local/tomcat/conf/context-$profile.xml
+sed --in-place 's/@postgres.wpm.db@/'"$POSTGRES_WPM_DB_NAME"'/' /usr/local/tomcat/conf/context-$profile.xml
 sed --in-place 's/@postgres.driver@/'"$POSTGRES_DB_DRIVER"'/' /usr/local/tomcat/conf/context-$profile.xml
 
 sed --in-place=.backup 's/@postgres.repo.db@/'"$POSTGRES_DB_NAME"'/' /usr/local/tomcat/conf/repository-$profile.xml

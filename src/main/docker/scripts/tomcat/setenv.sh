@@ -28,7 +28,7 @@ REP_OPTS="-Drepo.path=${REPO_PATH} -Drepo.bootstrap=${REPO_BOOTSTRAP} -Drepo.con
 L4J_OPTS="-Dlog4j.configurationFile=file://${CATALINA_HOME}/conf/log4j2.xml -DLog4jContextSelector=org.apache.logging.log4j.core.selector.BasicContextSelector"
 
 # JVM heap size options
-JVM_OPTS="-server -Xms${JAVA_MINHEAP} -Xmx${JAVA_MAXHEAP} -XX:+UseG1GC -Djava.util.Arrays.useLegacyMergeSort=true"
+JVM_OPTS="-server -Xms${JAVA_MINHEAP} -Xmx${JAVA_MAXHEAP} -XX:+UseG1GC -Djava.util.Arrays.useLegacyMergeSort=true -Djava.security.egd=file:/dev/./urandom"
 
 # JVM garbage Collector options
 VGC_OPTS="-verbosegc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:${CATALINA_HOME}/logs/gc.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=2048k"

@@ -49,5 +49,10 @@
       <groupId>com.onehippo.cms7</groupId>
       <artifactId>hippo-addon-lucene-export</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.onehippo.cms7</groupId>
+      <artifactId>hippo-addon-wpm-cms-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
   </dependencies>
 </project>
