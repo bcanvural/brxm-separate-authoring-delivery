@@ -1,4 +1,5 @@
 /content/gallery/myproject/samples:
+  .meta:order-before: banners
   jcr:primaryType: hippogallery:stdImageGallery
   jcr:mixinTypes: ['mix:referenceable']
   jcr:uuid: 5e78431f-c1b8-4ded-910b-1fb7f790de4e

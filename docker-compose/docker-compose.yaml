@@ -57,4 +57,4 @@ services:
       POSTGRES_USER: postgres
     volumes:
       - ./brxmdb.sql:/docker-entrypoint-initdb.d/brxmdb.sql
-      - ./wpmdb.sql:/docker-entrypoint-initdb.d/wpmdb.sql
+#      - ./wpmdb.sql:/docker-entrypoint-initdb.d/wpmdb.sql

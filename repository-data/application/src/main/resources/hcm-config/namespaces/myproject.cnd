@@ -7,6 +7,9 @@
 [myproject:basedocument] > hippo:document, hippostd:publishableSummary, hippostdpubwf:document
   orderable
 
+[myproject:bannerdocument] > hippostd:relaxed, hippotranslation:translated, myproject:basedocument
+  orderable
+
 [myproject:newsdocument] > hippostd:relaxed, hippotranslation:translated, myproject:basedocument
   orderable
 

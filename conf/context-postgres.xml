@@ -30,13 +30,13 @@
             driverClassName="@postgres.driver@"
             url="jdbc:postgresql://@postgres.host@:@postgres.port@/@postgres.repo.db@"/>
 
-    <Resource name="jdbc/wpmDS" auth="Container" type="javax.sql.DataSource"
-              maxTotal="20" maxIdle="10" initialSize="2" maxWaitMillis="10000"
-              testWhileIdle="true" testOnBorrow="false" validationQuery="SELECT 1"
-              timeBetweenEvictionRunsMillis="10000"
-              minEvictableIdleTimeMillis="60000"
-              username="@postgres.username@" password="@postgres.password@"
-              driverClassName="@postgres.driver@"
-              url="jdbc:postgresql://@postgres.host@:@postgres.port@/@postgres.wpm.db@?characterEncoding=utf8"/>
+<!--    <Resource name="jdbc/wpmDS" auth="Container" type="javax.sql.DataSource"-->
+<!--              maxTotal="20" maxIdle="10" initialSize="2" maxWaitMillis="10000"-->
+<!--              testWhileIdle="true" testOnBorrow="false" validationQuery="SELECT 1"-->
+<!--              timeBetweenEvictionRunsMillis="10000"-->
+<!--              minEvictableIdleTimeMillis="60000"-->
+<!--              username="@postgres.username@" password="@postgres.password@"-->
+<!--              driverClassName="@postgres.driver@"-->
+<!--              url="jdbc:postgresql://@postgres.host@:@postgres.port@/@postgres.wpm.db@?characterEncoding=utf8"/>-->
 
 </Context>
